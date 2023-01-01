@@ -1,5 +1,5 @@
 node {
-    withDockerContainer(image: 'python:3.11-rc-bullseye') {
+    withDockerContainer(image: 'python') {
         stage('Build') {
             sh 'python -m py_compile sources/add2vals.py sources/calc.py'
         }
