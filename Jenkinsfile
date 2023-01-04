@@ -12,9 +12,21 @@ node {
     stage('Manual Approval') {
         input message: 'Lanjutkan ke tahap Deploy?'
     }
-    stage('Deploy') {
-        docker.image('cdrx/pyinstaller-linux:python2').inside {
-            sh 'pyinstaller --onefile sources/add2vals.py'
-        }   
+    try {
+        stage('Deploy') {
+            docker.image('cdrx/pyinstaller-linux:python2').inside {
+                sh 'pyinstaller --onefile sources/add2vals.py'
+            }
+        }
+    }
+    catch (exc) {
+        echo 'I failed'
+    }
+    finally {
+        if (currentBuild.result == 'UNSTABLE') {
+            echo 'I am unstable :/'
+        } else {
+            archiveArtifacts 'dist/add2vals'
+        }
     }
 }
