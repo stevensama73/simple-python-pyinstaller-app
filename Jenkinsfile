@@ -14,7 +14,7 @@ node {
             // sh 'pyinstaller -F sources/add2vals.py'
             // archiveArtifacts "/sources/dist/add2vals"
             echo 'deploy'
-            sh 'sleep 60'
+            // sh 'sleep 60'
         }   
     }
 }
