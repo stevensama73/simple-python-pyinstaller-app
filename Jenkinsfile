@@ -9,12 +9,6 @@ node {
             sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
         }   
     }
-    stage('Manual Approval') {
-        docker.image('cdrx/pyinstaller-linux:python2').inside {
-            sh 'pyinstaller --onefile sources/add2vals.py'
-            sh 'sleep 60'
-        }   
-    }
     stage('Deploy') {
         docker.image('cdrx/pyinstaller-linux:python2').inside {
             sh 'pyinstaller -F sources/add2vals.py'
