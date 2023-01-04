@@ -10,9 +10,9 @@ node {
             sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
         }   
     }
+    withEnv(['VOLUME=$(pwd)/sources:/src',
+            'IMAGE=cdrx/pyinstaller-linux:python2'])
     try {
-        withEnv(['VOLUME=$(pwd)/sources:/src',
-                'IMAGE=cdrx/pyinstaller-linux:python2'])
         stage('Deploy') {
             dir(path: env.BUILD_ID) {
                 unstash(name: 'compiled-results')
