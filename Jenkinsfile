@@ -11,8 +11,9 @@ node {
     }
     stage('Deploy') {
         docker.image('cdrx/pyinstaller-linux:python2').inside {
-            sh 'pyinstaller -F sources/add2vals.py'
-            archiveArtifacts "/sources/dist/add2vals"
+            // sh 'pyinstaller -F sources/add2vals.py'
+            // archiveArtifacts "/sources/dist/add2vals"
+            echo 'deploy'
             sh 'sleep 60'
         }   
     }
