@@ -11,7 +11,7 @@ node {
         }   
     }
     stage('Manual Approval') {
-        input message:'Lanjutkan ke tahap Deploy?' 
+        input message: 'Lanjutkan ke tahap Deploy?' 
     }
     withEnv(['VOLUME=$(pwd)/sources:/src',
             'IMAGE=cdrx/pyinstaller-linux:python2']) {
