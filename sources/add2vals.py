@@ -6,11 +6,11 @@ the calc.py library's 'add2' function.
 import sys
 import calc
 
-argnumbers = len(sys.argv) - 1
+argnumbers = 2
 
 if argnumbers == 2 :
     print("")
-    print("The result is " + str(calc.add2(str(sys.argv[1]), str(sys.argv[2]))))
+    print("The result is " + str(calc.add2(3, 2)))
     print("")
     sys.exit(0)
 
