@@ -1,1 +1,1 @@
-worker: python add2vals.py
+worker: python app.py
