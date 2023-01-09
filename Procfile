@@ -1,1 +1,1 @@
-worker: python sources/test_calc.py
+worker: python script.py
