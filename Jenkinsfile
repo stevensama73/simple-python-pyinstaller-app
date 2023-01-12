@@ -1,8 +1,7 @@
 node {
     stage('Build') {
         docker.image('python:3.12.0a4-bullseye').inside {
-            sh 'sudo nohup pip install flask'
-            sh 'python -m py_compile app.py'
+            sh 'virtualenv venv && . venv/bin/activate && pip install flask && python -m py_compile app.py'
         }   
     }
     stage('Test') {
