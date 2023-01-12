@@ -2,7 +2,8 @@ node {
     withEnv(['HOME=${env.WORKSPACE}',
             'IMAGE=python:3.12.0a4-bullseye']) {
             stage('Build') {
-                sh 'pip install --user flask && python -m py_compile app.py' 
+                sh 'pip install --user -r requirements.txt' 
+                sh 'python -m py_compile app.py'
             }
     }   
     stage('Test') {
