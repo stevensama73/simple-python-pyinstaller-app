@@ -1,7 +1,7 @@
 node {
     stage('Build') {
         docker.image('python:2-alpine').inside {
-            sh 'python -m py_compile app.py'
+            sh 'python -m py_compile test.py'
         }   
     }
     stage('Test') {
@@ -13,7 +13,7 @@ node {
         input message: 'Lanjutkan ke tahap Deploy?' 
     }
     stage('Deploy') {
-        sh "sudo nohup python3 app.py > log.txt 2>&1 &"
+        sh "sudo nohup python app.py > log.txt 2>&1 &"
         sh "sleep 60"
     }
 }
