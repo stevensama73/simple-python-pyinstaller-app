@@ -1,6 +1,6 @@
 node {
     stage('Build') {
-        docker.image('IMAGE=python:3.12.0a4-bullseye').inside {
+        docker.image('python:3.12.0a4-bullseye').inside {
             sh 'python -m py_compile app.py'
             sh 'pip install --user -r requirements.txt' 
         }
