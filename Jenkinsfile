@@ -1,6 +1,6 @@
 node {
     stage('Build') {
-        docker.image('3.10.9-alpine3.16').inside {
+        docker.image('3.9-bullseye').inside {
             sh 'python -m py_compile app.py'
             stash(name: 'compiled-results', includes: 'sources/*.py*')
         }   
