@@ -1,7 +1,7 @@
 node {
     stage('Build') {
         docker.image('python:2-alpine').inside {
-            sh 'python -m py_compile test.py'
+            sh 'python -m py_compile sources/app.py'
         }   
     }
     stage('Test') {
