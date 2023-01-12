@@ -1,11 +1,10 @@
 node {
-    withEnv(['HOME=${env.WORKSPACE}',
-            'IMAGE=python:3.12.0a4-bullseye']) {
-            stage('Build') {
-                sh 'python -m py_compile app.py'
-                sh 'pip install --user -r requirements.txt' 
-            }
-    }   
+    stage('Build') {
+        docker.image('IMAGE=python:3.12.0a4-bullseye').inside {
+            sh 'python -m py_compile app.py'
+            sh 'pip install --user -r requirements.txt' 
+        }
+    }
     stage('Test') {
         docker.image('qnib/pytest').inside {
             sh 'py.test --verbose --junit-xml test-reports/results.xml test.py'
