@@ -5,12 +5,12 @@ node {
         }
     }
     withEnv(["HOME=${env.WORKSPACE}"]) {
-    stage('Test') {
-        docker.image('qnib/pytest').inside {
-            sh 'pip install --user -r requirements.txt' 
-            sh 'py.test --verbose --junit-xml test-reports/results.xml test.py'
-        }   
-    }
+        stage('Test') {
+            docker.image('qnib/pytest').inside {
+                sh 'pip install --user -r requirements.txt' 
+                sh 'py.test --verbose --junit-xml test-reports/results.xml test.py'
+            }   
+        }
     }
     stage('Manual Approval') {
         input message: 'Lanjutkan ke tahap Deploy?' 
